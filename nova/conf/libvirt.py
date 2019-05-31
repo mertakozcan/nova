@@ -370,7 +370,7 @@ Minimum delay is 3 seconds. Value is per GiB of guest RAM + disk to be
 transferred, with lower bound of a minimum of 2 GiB per device.
 """),
     cfg.IntOpt('live_migration_completion_timeout',
-               default=800,
+               default=1,
                min=0,
                mutable=True,
                help="""
@@ -388,7 +388,7 @@ Related options:
 * live_migration_downtime_delay
 """),
     cfg.StrOpt('live_migration_timeout_action',
-               default='abort',
+               default='force_complete',
                choices=('abort', 'force_complete'),
                mutable=True,
                help="""
@@ -405,7 +405,7 @@ Related options:
 * live_migration_permit_post_copy
 """),
     cfg.BoolOpt('live_migration_permit_post_copy',
-                default=False,
+                default=True,
                 help="""
 This option allows nova to switch an on-going live migration to post-copy
 mode, i.e., switch the active VM to the one on the destination node before the
